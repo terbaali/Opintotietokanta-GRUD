@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+    <body style="background-color:#99c9ff;"></body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>opiskelija</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body class="container" style=" margin-top: 50px;">
+
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+   
+    <div class="card"> 
+        <div class="card-header">
+            <ul class="nav nav-pills w-100">
+                <li class="nav-pill active">
+                    <a class="nav-link"style="font-size:35px; color:DodgerBlue;">OPINTOREKISTERI</a>
+                    
+                </li>
+                <li class="nav-pill ml-auto">
+                    
+                </li>
+                <a class="nav-link active" href="https://media.makeameme.org/created/hi-troll.jpg">TUHOA KAIKKI</a>
+            </ul>
+        </div>
+        
+    <div class="card-body">
+        <div class="card"> 
+            <div class="card-header">
+                <ul class="nav nav-pills w-80">
+                    <li class="nav-pill active">
+                        <a class="nav-link"style="font-size:25px; color:DodgerBlue;">OPISKELIJAT</a>
+                    </li>
+                    <li class="nav-pill ml-auto">
+                        <a class="nav-link active" href="/opiskelija/add">Lisää opiskelija</a>
+                    </li>
+                </ul>
+            </div>
+
+        <% if(data.length) { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Rivinro</th>
+                    <th scope="col">OpiskelijaID</th>
+                    <th scope="col">Etunimi</th>
+                    <th scope="col">Sukunimi</th>
+                    <th scope="col">Luokkatunnus</th>
+                    <th scope="col">Osoite</th>
+                    <th width="200px">Toiminto</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0; i< data.length; i++) { %>
+                <tr>
+                    <th scope="row"><%= (i+1) %></th>
+                    <td><%= data[i].idopiskelija%></td>
+                    <td><%= data[i].etu_nimi%></td>
+                    <td><%= data[i].suku_nimi%></td>
+                    <td><%= data[i].luokka_tunnus%></td>
+                    <td><%= data[i].osoite%></td>
+                    <td>
+                        <a class="btn btn-success edit" href="../opiskelija/edit/<%=data[i].idopiskelija%>">Muokkaa</a>                       
+                        <a class="btn btn-danger delete" onclick="return alert('Oletko varma?')" href="../opiskelija/delete/<%=data[i].idopiskelija%>">Poista</a>                       
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <% } %>
+        
+        <!-- if result is empty -->
+        <% if(!data.length) { %>
+            <p class="text-center">Opiskelijoita ei löydy!</p>
+        <% } %>
+        
+        </div>
+    </div>
+    
+        </div>
+
+   
+
+</body>
+</html>
