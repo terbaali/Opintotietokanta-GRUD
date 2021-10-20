@@ -137,7 +137,7 @@ router.post('/update/:idOpintojakso', function(req, res, next) {
             Koodi: Koodi
         }
         // update query
-        dbConn.query('UPDATE books SET ? WHERE idOpintojakso = ' + idOpintojakso, form_data, function(err, result) {
+        dbConn.query('UPDATE opintojakso SET ? WHERE idOpintojakso = ' + idOpintojakso, form_data, function(err, result) {
             //if(err) throw err
             if (err) {
                 // set flash message
@@ -162,7 +162,7 @@ router.get('/delete/(:idOpintojakso)', function(req, res, next) {
 
     let idOpintojakso = req.params.idOpintojakso;
      
-    dbConn.query('DELETE FROM books WHERE id = ' + idOpintojakso, function(err, result) {
+    dbConn.query('DELETE FROM opintojako WHERE id = ' + idOpintojakso, function(err, result) {
         //if(err) throw err
         if (err) {
             // set flash message
